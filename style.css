@@ -859,27 +859,111 @@ h1, h2, h3, h4, h5, h6 {
 
 /* About Section Responsive */
 @media (max-width: 768px) {
+    .about {
+        padding: 60px 0;
+    }
+    
     .about-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
     }
     
     .about-image {
         position: static;
+        order: -1;
     }
     
-    .profile-stats {
-        grid-template-columns: repeat(3, 1fr);
+    .main-quote {
+        font-size: 1.1rem;
+        padding-left: 15px;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+    
+    .author {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .about-details h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .about-details p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+    
+    .about-highlights {
+        margin: 2rem 0;
     }
     
     .highlight-item {
         flex-direction: column;
         text-align: center;
+        padding: 1.5rem 1rem;
+        margin-bottom: 1rem;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
     
-    .main-quote {
+    .highlight-item i {
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        color: #667eea;
+    }
+    
+    .highlight-item h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+    
+    .highlight-item p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #666;
+        margin-bottom: 0;
+    }
+    
+    .skills {
+        margin-top: 2rem;
+    }
+    
+    .skills h4 {
         font-size: 1.2rem;
-        padding-left: 20px;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        justify-items: center;
+    }
+    
+    .skill-tag {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        white-space: nowrap;
+    }
+    
+    .profile-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-top: 1rem;
+    }
+    
+    .stat-item {
+        text-align: center;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
     }
     
     .pricing-grid {
@@ -2098,7 +2182,83 @@ tr:hover {
         padding: 6px 12px;
     }
 
-    /* Services Section */
+    /* About Section Mobile - 480px */
+    .about {
+        padding: 50px 0;
+    }
+    
+    .about-content {
+        gap: 20px;
+        padding: 0 10px;
+    }
+    
+    .main-quote {
+        font-size: 1rem;
+        padding-left: 12px;
+        border-left-width: 3px;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+    }
+    
+    .author {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .about-details h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .about-details p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+    }
+    
+    .highlight-item {
+        padding: 1rem 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .highlight-item h4 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .highlight-item p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .skills h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .skill-tag {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+        text-align: center;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+    
+    .profile-stats {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .stat-item {
+        padding: 0.75rem;
+    }
+
+    /* Services Section Mobile */
     .services {
         padding: 60px 0;
     }
