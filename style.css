@@ -863,26 +863,53 @@ h1, h2, h3, h4, h5, h6 {
         padding: 60px 0;
     }
     
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .about-image {
-        position: static;
-        order: -1;
+    .about-intro {
+        margin-bottom: 40px;
     }
     
     .main-quote {
         font-size: 1.1rem;
-        padding-left: 15px;
+        padding: 1.5rem;
         margin-bottom: 1rem;
         line-height: 1.5;
     }
     
     .author {
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 0;
+        font-size: 1rem;
+    }
+    
+    /* Profile Stats - 手機版改為垂直排列 */
+    .profile-stats-section {
+        flex-direction: column;
+        gap: 20px;
+        padding: 1.5rem;
+        margin-bottom: 40px;
+    }
+    
+    .profile-placeholder {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .stat-item {
+        padding: 0.75rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
     }
     
     .about-details h3 {
@@ -951,19 +978,6 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 0.85rem;
         padding: 6px 12px;
         white-space: nowrap;
-    }
-    
-    .profile-stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        margin-top: 1rem;
-    }
-    
-    .stat-item {
-        text-align: center;
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.8);
-        border-radius: 10px;
     }
     
     .pricing-grid {
@@ -1538,17 +1552,11 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
 }
 
-.about-content {
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    gap: 60px;
-    align-items: start;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.about-text {
-    max-width: none;
+/* About Intro (Quote Section) */
+.about-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
 }
 
 .main-quote {
@@ -1556,23 +1564,100 @@ h1, h2, h3, h4, h5, h6 {
     font-style: italic;
     color: #333;
     margin-bottom: 1rem;
-    padding-left: 30px;
+    padding: 2rem;
     border-left: 4px solid #667eea;
     line-height: 1.6;
     text-align: left;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 10px;
 }
 
 .author {
     font-weight: 600;
     color: #667eea;
-    margin-bottom: 3rem;
+    margin-bottom: 0;
     text-align: right;
+    font-size: 1.1rem;
+}
+
+/* Profile Stats Section - 新的統計區域 */
+.profile-stats-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 600px;
+    margin: 0 auto 60px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.profile-avatar {
+    flex-shrink: 0;
+}
+
+.profile-placeholder {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.5rem;
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* About Content - 現在只是單列佈局 */
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-text {
+    width: 100%;
 }
 
 .about-details h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: #333;
+    text-align: center;
 }
 
 .about-details p {
@@ -1580,6 +1665,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.7;
     color: #666;
     margin-bottom: 2rem;
+    text-align: center;
 }
 
 .about-highlights {
@@ -2187,14 +2273,13 @@ tr:hover {
         padding: 50px 0;
     }
     
-    .about-content {
-        gap: 20px;
-        padding: 0 10px;
+    .about-intro {
+        margin-bottom: 30px;
     }
     
     .main-quote {
         font-size: 1rem;
-        padding-left: 12px;
+        padding: 1rem;
         border-left-width: 3px;
         line-height: 1.4;
         margin-bottom: 1rem;
@@ -2202,7 +2287,40 @@ tr:hover {
     
     .author {
         font-size: 0.95rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0;
+    }
+    
+    /* Profile Stats - 極小螢幕全部垂直排列 */
+    .profile-stats-section {
+        flex-direction: column;
+        gap: 15px;
+        padding: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    .profile-placeholder {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .stat-item {
+        padding: 0.75rem;
+    }
+    
+    .stat-number {
+        font-size: 1.4rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
     }
     
     .about-details h3 {
@@ -2247,15 +2365,6 @@ tr:hover {
         text-align: center;
         max-width: 200px;
         margin: 0 auto;
-    }
-    
-    .profile-stats {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-    
-    .stat-item {
-        padding: 0.75rem;
     }
 
     /* Services Section Mobile */
