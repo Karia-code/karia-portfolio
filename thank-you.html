@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Karia Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="thank-you-page">
+        <div class="container">
+            <div class="thank-you-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1>Thank You!</h1>
+                <h2>謝謝您！</h2>
+                <p class="success-message">
+                    <span class="en">Your message has been sent successfully. I'll get back to you within 24 hours.</span>
+                    <span class="zh">您的訊息已成功發送。我會在24小時內回覆您。</span>
+                </p>
+                <div class="next-steps">
+                    <h3>What's Next? | 接下來呢？</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span class="en">Check your email for confirmation</span>
+                            <span class="zh">檢查您的電子郵件確認</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span class="en">I'll review your request within 24 hours</span>
+                            <span class="zh">我會在24小時內審查您的請求</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span class="en">Expect a personalized response soon</span>
+                            <span class="zh">期待很快收到個人化回覆</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="action-buttons">
+                    <a href="/" class="btn btn-primary">
+                        <i class="fas fa-home"></i>
+                        <span class="en">Back to Home</span>
+                        <span class="zh">返回首頁</span>
+                    </a>
+                    <a href="https://github.com/Karia-code" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span class="en">View My Work</span>
+                        <span class="zh">查看我的作品</span>
+                    </a>
+                </div>
+                <div class="contact-alternatives">
+                    <p>
+                        <span class="en">Need immediate assistance?</span>
+                        <span class="zh">需要立即協助？</span>
+                    </p>
+                    <div class="quick-contact">
+                        <a href="mailto:contact@karia.store" class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            contact@karia.store
+                        </a>
+                        <a href="https://linkedin.com/in/karia" class="contact-method" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .thank-you-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+        }
+
+        .thank-you-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+
+        .thank-you-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .thank-you-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .success-message {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .next-steps {
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .next-steps h3 {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .next-steps li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        .next-steps i {
+            margin-right: 1rem;
+            color: #667eea;
+            width: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .contact-alternatives {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-contact {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-method {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 25px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Language display logic */
+        .zh { display: none; }
+        
+        @media (max-width: 768px) {
+            .thank-you-content {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .quick-contact {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+
+    <script>
+        // Simple language detection
+        const browserLang = navigator.language || navigator.userLanguage;
+        const preferredLang = localStorage.getItem('language');
+        
+        if (preferredLang === 'zh' || (browserLang.startsWith('zh') && !preferredLang)) {
+            document.querySelectorAll('.en').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.zh').forEach(el => el.style.display = 'inline');
+        }
+    </script>
+</body>
+</html>
