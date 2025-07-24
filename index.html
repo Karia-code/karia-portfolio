@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karia | Design - 將想法塑造成數位形式</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Test Script -->
+    <script>
+        function toggleLanguage() {
+            console.log('Toggle language called!');
+            const button = document.getElementById('lang-toggle');
+            if (!button) {
+                console.error('Button not found!');
+                return;
+            }
+            
+            const isEnglish = button.textContent.trim() === '中文';
+            console.log('Current state:', isEnglish ? 'English' : 'Chinese');
+            
+            if (isEnglish) {
+                // Switch to Chinese
+                button.textContent = 'EN';
+                
+                // Switch all elements with data-zh
+                document.querySelectorAll('[data-zh]').forEach(el => {
+                    if (el.tagName === 'TEXTAREA') {
+                        el.placeholder = el.getAttribute('data-zh');
+                    } else if (el.tagName === 'OPTION') {
+                        el.textContent = el.getAttribute('data-zh');
+                    } else {
+                        let content = el.getAttribute('data-zh');
+                        // Add bold formatting for Ellez LLC
+                        content = content.replace('Ellez LLC', '<strong>Ellez LLC</strong>');
+                        el.innerHTML = content;
+                    }
+                });
+                
+                localStorage.setItem('language', 'zh');
+                console.log('Switched to Chinese');
+            } else {
+                // Switch to English
+                button.textContent = '中文';
+                
+                // Switch all elements with data-en
+                document.querySelectorAll('[data-en]').forEach(el => {
+                    if (el.tagName === 'TEXTAREA') {
+                        el.placeholder = el.getAttribute('data-en');
+                    } else if (el.tagName === 'OPTION') {
+                        el.textContent = el.getAttribute('data-en');
+                    } else {
+                        let content = el.getAttribute('data-en');
+                        // Add bold formatting for Ellez LLC
+                        content = content.replace('Ellez LLC', '<strong>Ellez LLC</strong>');
+                        el.innerHTML = content;
+                    }
+                });
+                
+                localStorage.setItem('language', 'en');
+                console.log('Switched to English');
+            }
+        }
+        
+        // Load preferred language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('language');
+            if (savedLanguage === 'zh') {
+                toggleLanguage();
+            }
+        });
+    </script>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Karia</span>
+                <span class="logo-divider">|</span>
+                <span class="logo-subtitle">design</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link" data-en="Home" data-zh="首頁">Home</a>
+                <a href="#about" class="nav-link" data-en="About" data-zh="關於">About</a>
+                <a href="#services" class="nav-link" data-en="Services" data-zh="服務">Services</a>
+                <a href="#portfolio" class="nav-link" data-en="Portfolio" data-zh="作品">Portfolio</a>
+                <a href="#additional-services" class="nav-link" data-en="Connections" data-zh="人脈">Connections</a>
+                <a href="#pricing" class="nav-link" data-en="Pricing" data-zh="價格">Pricing</a>
+                <a href="#guide" class="nav-link" data-en="Guide" data-zh="指南">Guide</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-zh="聯絡">Contact</a>
+                <div class="language-toggle">
+                    <button id="lang-toggle" class="lang-btn" onclick="toggleLanguage()">中文</button>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-brand">Karia</span>
+                </h1>
+                <p class="hero-tagline" data-en="Your story, beautifully built." data-zh="您的故事，精美呈現。">Your story, beautifully built.</p>
+                <p class="hero-description" data-en="Karia website design, shape your ideas into a digital form —whether for your brand, your story, or something only you can imagine." data-zh="Karia 網站設計，將您的想法塑造成數位形式——無論是為了您的品牌、您的故事，或是只有您才能想像的事物。">
+                    Karia website design, shape your ideas into a digital form —whether for your brand, your story, or something only you can imagine.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary" data-en="Contact me" data-zh="聯絡我">Contact me</a>
+                    <a href="#guide" class="btn btn-secondary" data-en="Read More" data-zh="了解更多">Read More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-visual">
+                    <div class="floating-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <blockquote class="main-quote" data-en="Maybe you have an idea, a story to tell, or a project to show. You want it to be seen, to be felt, to exist somewhere beyond your mind. I am here to help you bring it to life — thoughtfully, beautifully, and personally." data-zh="也許您有一個想法、一個故事要說，或是一個專案要展示。您希望它被看見、被感受到，在您的腦海之外存在。我在這裡幫助您將它實現——用心地、美麗地、個人化地。">
+                        "Maybe you have an idea, a story to tell, or a project to show. You want it to be seen, to be felt, to exist somewhere beyond your mind. I am here to help you bring it to life — thoughtfully, beautifully, and personally."
+                    </blockquote>
+                    <p class="author">Kailin S.</p>
+                    
+                    <div class="about-details">
+                        <h3 data-en="About Me" data-zh="關於我">About Me</h3>
+                        <p data-en="Hi, I'm Kailin — a designer, storyteller, and Chief Technology Officer at Ellez LLC. I'm passionate about creating meaningful digital experiences that bridge the gap between beautiful design and powerful technology. With expertise in both creative design and technical leadership, I specialize in transforming ideas into beautiful, functional websites while leading innovative development projects." data-zh="您好，我是 Kailin — 設計師、故事敘述者，以及 Ellez LLC 的技術總監。我熱衷於創造有意義的數位體驗，連接美麗設計與強大技術之間的橋樑。憑藉創意設計和技術領導的專業知識，我專精於將想法轉化為美麗、功能性的網站，同時領導創新開發專案。">Hi, I'm Kailin — a designer, storyteller, and Chief Technology Officer at Ellez LLC. I'm passionate about creating meaningful digital experiences that bridge the gap between beautiful design and powerful technology. With expertise in both creative design and technical leadership, I specialize in transforming ideas into beautiful, functional websites while leading innovative development projects.</p>
+                        
+                        <div class="about-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-palette"></i>
+                                <div>
+                                    <h4 data-en="Design Philosophy" data-zh="設計理念">Design Philosophy</h4>
+                                    <p data-en="Every project tells a story. I believe in creating designs that are not just visually appealing, but emotionally resonant and purposeful." data-zh="每個專案都在訴說一個故事。我相信創造的設計不僅要視覺吸引人，更要能引起情感共鳴並具有目的性。">Every project tells a story. I believe in creating designs that are not just visually appealing, but emotionally resonant and purposeful.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="highlight-item">
+                                <i class="fas fa-code"></i>
+                                <div>
+                                    <h4 data-en="Technical Expertise" data-zh="技術專長">Technical Expertise</h4>
+                                    <p data-en="Proficient in modern web technologies, responsive design, and user experience optimization to ensure your site performs beautifully across all devices." data-zh="精通現代網頁技術、響應式設計和用戶體驗優化，確保您的網站在所有設備上都能完美運行。">Proficient in modern web technologies, responsive design, and user experience optimization to ensure your site performs beautifully across all devices.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="highlight-item">
+                                <i class="fas fa-heart"></i>
+                                <div>
+                                    <h4 data-en="Personal Touch" data-zh="個人化服務">Personal Touch</h4>
+                                    <p data-en="I work closely with each client to understand their vision, ensuring every detail reflects their unique personality and goals." data-zh="我與每位客戶密切合作，了解他們的願景，確保每個細節都能反映他們獨特的個性和目標。">I work closely with each client to understand their vision, ensuring every detail reflects their unique personality and goals.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skills">
+                            <h4 data-en="Skills & Tools" data-zh="技能與工具">Skills & Tools</h4>
+                            <div class="skills-grid">
+                                <span class="skill-tag" data-en="Web Design" data-zh="網頁設計">Web Design</span>
+                                <span class="skill-tag" data-en="Responsive Development" data-zh="響應式開發">Responsive Development</span>
+                                <span class="skill-tag" data-en="Brand Identity" data-zh="品牌識別">Brand Identity</span>
+                                <span class="skill-tag" data-en="UI/UX Design" data-zh="UI/UX 設計">UI/UX Design</span>
+                                <span class="skill-tag" data-en="Content Strategy" data-zh="內容策略">Content Strategy</span>
+                                <span class="skill-tag" data-en="SEO Optimization" data-zh="SEO 優化">SEO Optimization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="profile-card">
+                        <div class="profile-placeholder">
+                            <i class="fas fa-user"></i>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">2+</span>
+                                <span class="stat-label" data-en="Years Experience" data-zh="年經驗">Years Experience</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label" data-en="Client Satisfaction" data-zh="客戶滿意度">Client Satisfaction</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title" data-en="Karia's Services" data-zh="Karia 的服務">Karia's Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3 class="service-title" data-en="Website Design & Building" data-zh="網站設計與建置">Website Design & Building</h3>
+                </div>
+
+                <div class="service-card">
+                    <h3 class="service-title" data-en="Personal Branding" data-zh="個人品牌">Personal Branding</h3>
+                </div>
+
+                <div class="service-card">
+                    <h3 class="service-title" data-en="Planning & Platform Consultation" data-zh="規劃與平台諮詢">Planning & Platform Consultation</h3>
+                </div>
+
+                <div class="service-card">
+                    <h3 class="service-title" data-en="Story Writing" data-zh="故事撰寫">Story Writing</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title" data-en="Featured Works" data-zh="精選作品">Featured Works</h2>
+            <p class="portfolio-intro" data-en="A showcase of recent projects that tell stories and create meaningful digital experiences." data-zh="展示近期專案，述說故事並創造有意義的數位體驗。">A showcase of recent projects that tell stories and create meaningful digital experiences.</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item featured">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3 data-en="Karia Design Portfolio" data-zh="Karia 設計作品集">Karia Design Portfolio</h3>
+                                <p data-en="Personal portfolio website showcasing design philosophy and services" data-zh="個人作品集網站，展示設計理念與服務">Personal portfolio website showcasing design philosophy and services</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag" data-en="Web Design" data-zh="網頁設計">Web Design</span>
+                                    <span class="tag" data-en="Responsive" data-zh="響應式">Responsive</span>
+                                    <span class="tag" data-en="Animation" data-zh="動畫">Animation</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <a href="#" class="portfolio-btn" onclick="window.open(window.location.href, '_blank'); return false;">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span data-en="View Live" data-zh="查看實際">View Live</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="project-type" data-en="Portfolio Website" data-zh="作品集網站">Portfolio Website</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3 class="portfolio-title" data-en="Karia Design Portfolio" data-zh="Karia 設計作品集">Karia Design Portfolio</h3>
+                        <p class="portfolio-description" data-en="A modern, animated portfolio website designed to showcase creative services with elegant animations and user-friendly interface." data-zh="一個現代化、動畫效果豐富的作品集網站，旨在以優雅的動畫和用戶友好的介面展示創意服務。">A modern, animated portfolio website designed to showcase creative services with elegant animations and user-friendly interface.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag" data-en="Responsive Design" data-zh="響應式設計">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Ellez.site</h3>
+                                <p data-en="Technology company specializing in Website Development, App Development, AI Integration, and UX/Interface Design" data-zh="專精於網站開發、應用程式開發、AI整合和UX/介面設計的科技公司">Technology company specializing in Website Development, App Development, AI Integration, and UX/Interface Design</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag" data-en="Web Development" data-zh="網站開發">Web Development</span>
+                                    <span class="tag" data-en="App Development" data-zh="應用開發">App Development</span>
+                                    <span class="tag" data-en="AI Integration" data-zh="AI整合">AI Integration</span>
+                                    <span class="tag" data-en="UX Design" data-zh="UX設計">UX Design</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <a href="https://ellez.site" target="_blank" class="portfolio-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span data-en="Visit Company" data-zh="造訪公司">Visit Company</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="project-type" data-en="Tech Company - CTO" data-zh="科技公司 - 技術總監">Tech Company - CTO</span>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <h3 class="portfolio-title">Ellez.site</h3>
+                        <p class="portfolio-description" data-en="As Chief Technology Officer at Ellez, I lead development of modern websites, cross-platform apps, AI-powered systems, and UX/interface design solutions. We're open to investment opportunities in software development." data-zh="作為 Ellez 的技術總監，我領導現代網站、跨平台應用程式、AI 驅動系統和 UX/介面設計解決方案的開發。我們開放軟體開發投資機會。">As Chief Technology Officer at Ellez, I lead development of modern websites, cross-platform apps, AI-powered systems, and UX/interface design solutions. We're open to investment opportunities in software development.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag" data-en="Website Development" data-zh="網站開發">Website Development</span>
+                            <span class="tech-tag" data-en="Mobile Apps" data-zh="行動應用">Mobile Apps</span>
+                            <span class="tech-tag" data-en="AI Integration" data-zh="AI 整合">AI Integration</span>
+                            <span class="tech-tag" data-en="UX/UI Design" data-zh="UX/UI 設計">UX/UI Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item coming-soon">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3 data-en="More Projects Coming Soon" data-zh="更多專案即將推出">More Projects Coming Soon</h3>
+                                <p data-en="Exciting new projects in development" data-zh="令人興奮的新專案正在開發中">Exciting new projects in development</p>
+                                <div class="portfolio-tags">
+                                    <span class="tag" data-en="Coming Soon" data-zh="即將推出">Coming Soon</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="project-type" data-en="Future Projects" data-zh="未來專案">Future Projects</span>
+                            <span class="project-year">2025</span>
+                        </div>
+                        <h3 class="portfolio-title" data-en="Coming Soon" data-zh="即將推出">Coming Soon</h3>
+                        <p class="portfolio-description" data-en="More amazing projects are in the pipeline. Stay tuned for updates on new creative works and collaborations." data-zh="更多精彩專案正在籌備中。請持續關注新的創意作品和合作項目的更新。">More amazing projects are in the pipeline. Stay tuned for updates on new creative works and collaborations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-cta">
+                <p data-en="Interested in working together?" data-zh="有興趣一起合作嗎？">Interested in working together?</p>
+                <a href="#contact" class="btn btn-primary" data-en="Start Your Project" data-zh="開始您的專案">Start Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services Section -->
+    <section id="additional-services" class="additional-services">
+        <div class="container">
+            <h2 class="section-title" data-en="Additional Connection Services" data-zh="額外人脈服務">Additional Connection Services</h2>
+            <p class="additional-intro" data-en="Beyond design and development, I can help connect you with trusted professionals in various creative industries. Commission rates negotiable." data-zh="除了設計與開發，我可以幫助您連結各個創意產業的可信賴專業人士。佣金可議。">Beyond design and development, I can help connect you with trusted professionals in various creative industries. Commission rates negotiable.</p>
+            
+            <div class="additional-grid">
+                <div class="additional-card">
+                    <div class="additional-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3 data-en="Textile & Apparel" data-zh="紡織與服飾">Textile & Apparel</h3>
+                    <ul class="additional-list">
+                        <li data-en="Textile fabric development contacts" data-zh="紡織布料開發聯絡">Textile fabric development contacts</li>
+                        <li data-en="T-shirt printing services" data-zh="T恤印刷服務">T-shirt printing services</li>
+                        <li data-en="Custom clothing manufacturing" data-zh="客製化服裝製造">Custom clothing manufacturing</li>
+                    </ul>
+                    <div class="commission-note" data-en="Commission negotiable" data-zh="佣金可議">Commission negotiable</div>
+                </div>
+
+                <div class="additional-card">
+                    <div class="additional-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 data-en="Design Professionals" data-zh="設計專業人士">Design Professionals</h3>
+                    <ul class="additional-list">
+                        <li data-en="Professional graphic designers" data-zh="專業平面設計師">Professional graphic designers</li>
+                        <li data-en="Brand identity specialists" data-zh="品牌識別專家">Brand identity specialists</li>
+                        <li data-en="Print design experts" data-zh="印刷設計專家">Print design experts</li>
+                    </ul>
+                    <div class="commission-note" data-en="Trusted partnerships" data-zh="可信賴的合作夥伴">Trusted partnerships</div>
+                </div>
+
+                <div class="additional-card">
+                    <div class="additional-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3 data-en="Photography & Styling" data-zh="攝影與造型">Photography & Styling</h3>
+                    <ul class="additional-list">
+                        <li data-en="Cosplay makeup artists" data-zh="Cosplay 化妝師">Cosplay makeup artists</li>
+                        <li data-en="Model photographers" data-zh="模特兒攝影師">Model photographers</li>
+                        <li data-en="Fashion stylists" data-zh="時尚造型師">Fashion stylists</li>
+                    </ul>
+                    <div class="commission-note" data-en="Creative professionals" data-zh="創意專業人士">Creative professionals</div>
+                </div>
+
+                <div class="additional-card">
+                    <div class="additional-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3 data-en="Event & Market" data-zh="活動與市集">Event & Market</h3>
+                    <ul class="additional-list">
+                        <li data-en="CWT convention booth setup guidance" data-zh="CWT 展場攤位設置指導">CWT convention booth setup guidance</li>
+                        <li data-en="Doujin market booth tutorials" data-zh="同人市集攤位教學">Doujin market booth tutorials</li>
+                        <li data-en="Event planning consultation" data-zh="活動規劃諮詢">Event planning consultation</li>
+                    </ul>
+                    <div class="commission-note" data-en="Experience sharing" data-zh="經驗分享">Experience sharing</div>
+                </div>
+
+                <div class="additional-card">
+                    <div class="additional-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3 data-en="Custom Manufacturing" data-zh="客製化製造">Custom Manufacturing</h3>
+                    <ul class="additional-list">
+                        <li data-en="Clothing customization contacts" data-zh="服裝客製化聯絡">Clothing customization contacts</li>
+                        <li data-en="Costume design referrals" data-zh="服裝設計轉介">Costume design referrals</li>
+                        <li data-en="Specialty tailoring services" data-zh="專業裁縫服務">Specialty tailoring services</li>
+                    </ul>
+                    <div class="commission-note" data-en="Quality assurance" data-zh="品質保證">Quality assurance</div>
+                </div>
+
+                <div class="additional-card">
+                    <div class="additional-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 data-en="Business Connections" data-zh="商業人脈">Business Connections</h3>
+                    <ul class="additional-list">
+                        <li data-en="Industry networking" data-zh="產業人脈網絡">Industry networking</li>
+                        <li data-en="Partnership facilitation" data-zh="合作夥伴促成">Partnership facilitation</li>
+                        <li data-en="Professional referrals" data-zh="專業推薦">Professional referrals</li>
+                    </ul>
+                    <div class="commission-note" data-en="Mutual benefits" data-zh="互惠互利">Mutual benefits</div>
+                </div>
+
+                <div class="additional-card">
+                    <div class="additional-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 data-en="Agricultural Resources" data-zh="農業資源">Agricultural Resources</h3>
+                    <ul class="additional-list">
+                        <li data-en="Post-harvest rice straw supply" data-zh="收稻後稻草供應">Post-harvest rice straw supply</li>
+                        <li data-en="Farmland rental opportunities" data-zh="農田租用機會">Farmland rental opportunities</li>
+                        <li data-en="Agricultural consultation" data-zh="農業諮詢">Agricultural consultation</li>
+                    </ul>
+                    <div class="commission-note" data-en="Seasonal availability" data-zh="季節性供應">Seasonal availability</div>
+                </div>
+            </div>
+
+            <div class="additional-cta">
+                <div class="cta-content">
+                    <h3 data-en="Need Professional Connections?" data-zh="需要專業人脈嗎？">Need Professional Connections?</h3>
+                    <p data-en="Looking for reliable contacts in creative industries? I can help connect you with trusted professionals I've worked with. Whether it's manufacturing, design, photography, or event planning - let's discuss how I can assist." data-zh="正在尋找創意產業的可靠聯絡人嗎？我可以幫助您連結我合作過的可信賴專業人士。無論是製造、設計、攝影或活動規劃 - 讓我們討論如何協助您。">Looking for reliable contacts in creative industries? I can help connect you with trusted professionals I've worked with. Whether it's manufacturing, design, photography, or event planning - let's discuss how I can assist.</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-primary" data-en="Discuss Connections" data-zh="討論人脈">Discuss Connections</a>
+                        <a href="#pricing" class="btn btn-secondary" data-en="View Main Services" data-zh="查看主要服務">View Main Services</a>
+                    </div>
+                </div>
+                <div class="cta-highlight">
+                    <div class="highlight-item">
+                        <i class="fas fa-star"></i>
+                        <span data-en="Trusted Network" data-zh="可信賴網絡">Trusted Network</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span data-en="Quality Assured" data-zh="品質保證">Quality Assured</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-comments"></i>
+                        <span data-en="Commission Negotiable" data-zh="佣金可議">Commission Negotiable</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title" data-en="Pricing Plans" data-zh="價格方案">Pricing Plans</h2>
+            <p class="pricing-intro" data-en="Choose the perfect plan for your project. All packages include responsive design, SEO optimization, and ongoing support." data-zh="為您的專案選擇完美的方案。所有套裝都包含響應式設計、SEO 優化和持續支援。">Choose the perfect plan for your project. All packages include responsive design, SEO optimization, and ongoing support.</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card basic">
+                    <div class="pricing-header">
+                        <h3 class="plan-name" data-en="Essential" data-zh="基礎版">Essential</h3>
+                        <div class="plan-price">
+                            <span class="currency" data-en="$" data-zh="NT$">$</span>
+                            <span class="amount" data-en="599" data-zh="17,970">599</span>
+                        </div>
+                        <p class="plan-description" data-en="Perfect for personal brands and simple portfolios" data-zh="適合個人品牌和簡單作品集">Perfect for personal brands and simple portfolios</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-en="One Page Website" data-zh="單頁網站">One Page Website</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="Responsive Design" data-zh="響應式設計">Responsive Design</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="Contact Form" data-zh="聯絡表單">Contact Form</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="Basic SEO Setup" data-zh="基礎 SEO 設置">Basic SEO Setup</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="2 Revisions" data-zh="2 次修改">2 Revisions</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="1 Month Support" data-zh="1 個月支援">1 Month Support</span></li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-outline">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card premium featured">
+                    <div class="featured-badge" data-en="Most Popular" data-zh="最受歡迎">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3 class="plan-name" data-en="Professional" data-zh="專業版">Professional</h3>
+                        <div class="plan-price">
+                            <span class="currency" data-en="$" data-zh="NT$">$</span>
+                            <span class="amount" data-en="999" data-zh="29,970">999</span>
+                        </div>
+                        <p class="plan-description" data-en="Ideal for businesses and comprehensive portfolios" data-zh="適合企業和完整作品集">Ideal for businesses and comprehensive portfolios</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-en="Multi-Page Website (up to 5 pages)" data-zh="多頁網站（最多 5 頁）">Multi-Page Website (up to 5 pages)</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="Custom Design & Branding" data-zh="客製化設計與品牌">Custom Design & Branding</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="Advanced Animations" data-zh="進階動畫效果">Advanced Animations</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="SEO Optimization" data-zh="SEO 優化">SEO Optimization</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="Content Management System" data-zh="內容管理系統">Content Management System</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="5 Revisions" data-zh="5 次修改">5 Revisions</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="3 Months Support" data-zh="3 個月支援">3 Months Support</span></li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-primary" data-en="Get Started" data-zh="開始使用">Get Started</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card enterprise">
+                    <div class="pricing-header">
+                        <h3 class="plan-name" data-en="Premium" data-zh="頂級版">Premium</h3>
+                        <div class="plan-price">
+                            <span class="currency" data-en="$" data-zh="NT$">$</span>
+                            <span class="amount" data-en="1,599" data-zh="47,970">1,599</span>
+                        </div>
+                        <p class="plan-description" data-en="Complete solution for established businesses" data-zh="成熟企業的完整解決方案">Complete solution for established businesses</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span data-en="Unlimited Pages" data-zh="無限頁面">Unlimited Pages</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="E-commerce Integration" data-zh="電商整合">E-commerce Integration</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="Advanced Functionality" data-zh="進階功能">Advanced Functionality</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="Performance Optimization" data-zh="效能優化">Performance Optimization</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="Analytics Setup" data-zh="分析工具設置">Analytics Setup</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="Unlimited Revisions" data-zh="無限次修改">Unlimited Revisions</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="6 Months Support" data-zh="6 個月支援">6 Months Support</span></li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-outline" data-en="Get Started" data-zh="開始使用">Get Started</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-addons">
+                <h3 data-en="Additional Services" data-zh="額外服務">Additional Services</h3>
+                <div class="addons-grid">
+                    <div class="addon-item">
+                        <h4 data-en="Brand Identity Package" data-zh="品牌識別套裝">Brand Identity Package</h4>
+                        <p data-en="Logo design, color palette, typography guidelines" data-zh="標誌設計、色彩調色盤、字體指南">Logo design, color palette, typography guidelines</p>
+                        <span class="addon-price" data-en="+$299" data-zh="+NT$8,970">+$299</span>
+                    </div>
+                    <div class="addon-item">
+                        <h4 data-en="Content Writing" data-zh="內容撰寫">Content Writing</h4>
+                        <p data-en="Professional copywriting for all pages" data-zh="所有頁面的專業文案撰寫">Professional copywriting for all pages</p>
+                        <span class="addon-price" data-en="+$199" data-zh="+NT$5,970">+$199</span>
+                    </div>
+                    <div class="addon-item">
+                        <h4 data-en="Photography Integration" data-zh="攝影整合">Photography Integration</h4>
+                        <p data-en="Professional photo sourcing and editing" data-zh="專業照片來源與編輯">Professional photo sourcing and editing</p>
+                        <span class="addon-price" data-en="+$149" data-zh="+NT$4,470">+$149</span>
+                    </div>
+                    <div class="addon-item">
+                        <h4 data-en="Social Media Setup" data-zh="社群媒體設定">Social Media Setup</h4>
+                        <p data-en="Integration with social platforms" data-zh="社群平台整合">Integration with social platforms</p>
+                        <span class="addon-price" data-en="+$99" data-zh="+NT$2,970">+$99</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Section -->
+    <section id="guide" class="guide">
+        <div class="container">
+            <h2 class="section-title" data-en="Should I choose a One Page or Multi Page website?" data-zh="我應該選擇單頁還是多頁網站？">Should I choose a One Page or Multi Page website?</h2>
+            <p class="guide-intro" data-en="Here's a quick guide to help you understand the differences and choose the format that best fits your needs." data-zh="這裡有一個快速指南，幫助您了解差異並選擇最適合您需求的格式。">Here's a quick guide to help you understand the differences and choose the format that best fits your needs.</p>
+            
+            <div class="comparison-container">
+                <div class="comparison-card">
+                    <h3 class="comparison-title" data-en="One Page Website" data-zh="單頁網站">One Page Website</h3>
+                    <div class="comparison-content">
+                        <div class="comparison-section">
+                            <h4 data-en="✔ What is it?" data-zh="✔ 什麼是單頁網站？">✔ What is it?</h4>
+                            <p data-en="A one page website displays all the essential content on a single page. Visitors navigate by scrolling or clicking anchor links to move between sections smoothly." data-zh="單頁網站將所有重要內容顯示在一個頁面上。訪客透過滾動或點擊錨點連結在不同區段間順暢移動。">A one page website displays all the essential content on a single page. Visitors navigate by scrolling or clicking anchor links to move between sections smoothly.</p>
+                        </div>
+                        <div class="comparison-section">
+                            <h4 data-en="✔ Who is it for?" data-zh="✔ 適合誰？">✔ Who is it for?</h4>
+                            <ul>
+                                <li data-en="Creators, freelancers, personal brands" data-zh="創作者、自由工作者、個人品牌">Creators, freelancers, personal brands</li>
+                                <li data-en="Event pages, portfolio previews, quick intros" data-zh="活動頁面、作品集預覽、快速介紹">Event pages, portfolio previews, quick intros</li>
+                                <li data-en="Those with limited content or a smaller budget" data-zh="內容有限或預算較少的用戶">Those with limited content or a smaller budget</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-section">
+                            <h4 data-en="✔ What it usually includes:" data-zh="✔ 通常包含什麼：">✔ What it usually includes:</h4>
+                            <ul>
+                                <li data-en="Hero section (main visual + intro)" data-zh="主視覺區塊（主要視覺 + 介紹）">Hero section (main visual + intro)</li>
+                                <li data-en="About / Brand story" data-zh="關於 / 品牌故事">About / Brand story</li>
+                                <li data-en="Services offered" data-zh="提供的服務">Services offered</li>
+                                <li data-en="Highlighted works or projects" data-zh="重點作品或專案">Highlighted works or projects</li>
+                                <li data-en="Contact form or direct links" data-zh="聯絡表單或直接連結">Contact form or direct links</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <h3 class="comparison-title" data-en="Multi Page Website" data-zh="多頁網站">Multi Page Website</h3>
+                    <div class="comparison-content">
+                        <div class="comparison-section">
+                            <h4 data-en="✔ What is it?" data-zh="✔ 什麼是多頁網站？">✔ What is it?</h4>
+                            <p data-en="A multi page website separates content into individual pages—like Home, About, Services, Portfolio, Contact—making it easier to organize detailed information." data-zh="多頁網站將內容分成獨立的頁面——如首頁、關於、服務、作品集、聯絡——讓詳細資訊更容易整理。">A multi page website separates content into individual pages—like Home, About, Services, Portfolio, Contact—making it easier to organize detailed information.</p>
+                        </div>
+                        <div class="comparison-section">
+                            <h4 data-en="✔ Who is it for?" data-zh="✔ 適合誰？">✔ Who is it for?</h4>
+                            <ul>
+                                <li data-en="Brands or individuals with more content" data-zh="有更多內容的品牌或個人">Brands or individuals with more content</li>
+                                <li data-en="Blogs, case studies, categorized portfolios" data-zh="部落格、案例研究、分類作品集">Blogs, case studies, categorized portfolios</li>
+                                <li data-en="Small businesses or long-term websites" data-zh="小企業或長期網站">Small businesses or long-term websites</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-section">
+                            <h4 data-en="✔ Common page structure:" data-zh="✔ 常見頁面結構：">✔ Common page structure:</h4>
+                            <ul>
+                                <li data-en="Home" data-zh="首頁">Home</li>
+                                <li data-en="About" data-zh="關於">About</li>
+                                <li data-en="Services" data-zh="服務">Services</li>
+                                <li data-en="Portfolio" data-zh="作品集">Portfolio</li>
+                                <li data-en="Contact" data-zh="聯絡">Contact</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison-table">
+                <h3 data-en="Feature Comparison" data-zh="功能比較">Feature Comparison</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-en="Feature" data-zh="功能">Feature</th>
+                                <th data-en="One Page Website" data-zh="單頁網站">One Page Website</th>
+                                <th data-en="Multi Page Website" data-zh="多頁網站">Multi Page Website</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-en="Navigation" data-zh="導航">Navigation</td>
+                                <td data-en="Scroll-based within one page" data-zh="在單頁內基於滾動">Scroll-based within one page</td>
+                                <td data-en="Separate pages with menu navigation" data-zh="獨立頁面配選單導航">Separate pages with menu navigation</td>
+                            </tr>
+                            <tr>
+                                <td data-en="Structure" data-zh="結構">Structure</td>
+                                <td data-en="Simple and focused" data-zh="簡單且專注">Simple and focused</td>
+                                <td data-en="Clear, expandable organization" data-zh="清晰、可擴展的組織">Clear, expandable organization</td>
+                            </tr>
+                            <tr>
+                                <td data-en="SEO Potential" data-zh="SEO 潛力">SEO Potential</td>
+                                <td data-en="Great for single-topic focus" data-zh="適合單一主題聚焦">Great for single-topic focus</td>
+                                <td data-en="Stronger SEO across multiple keywords" data-zh="跨多個關鍵字的更強 SEO">Stronger SEO across multiple keywords</td>
+                            </tr>
+                            <tr>
+                                <td data-en="Maintenance" data-zh="維護">Maintenance</td>
+                                <td data-en="Easier and faster" data-zh="更容易且更快速">Easier and faster</td>
+                                <td data-en="Scalable and content-rich" data-zh="可擴展且內容豐富">Scalable and content-rich</td>
+                            </tr>
+                            <tr>
+                                <td data-en="Interactivity" data-zh="互動性">Interactivity</td>
+                                <td data-en="Smooth scrolling & animations" data-zh="流暢滾動與動畫">Smooth scrolling & animations</td>
+                                <td data-en="Ideal for deep-dives and categorized info" data-zh="適合深度探索和分類資訊">Ideal for deep-dives and categorized info</td>
+                            </tr>
+                            <tr>
+                                <td data-en="Best for" data-zh="最適合">Best for</td>
+                                <td data-en="Personal brands, lightweight info" data-zh="個人品牌、輕量級資訊">Personal brands, lightweight info</td>
+                                <td data-en="Businesses, service platforms, content-driven sites" data-zh="企業、服務平台、內容驅動的網站">Businesses, service platforms, content-driven sites</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-en="Contact" data-zh="聯絡我們">Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 data-en="Start Your Project" data-zh="開始您的專案">Start Your Project</h3>
+                    <p data-en="Ready to bring your ideas to life? Let's discuss your project and create something beautiful together." data-zh="準備好將您的想法付諸實現了嗎？讓我們討論您的專案，一起創造美好的作品。">Ready to bring your ideas to life? Let's discuss your project and create something beautiful together.</p>
+                    
+                    <div class="contact-note">
+                        <h4 data-en="Investment Opportunities" data-zh="投資機會">Investment Opportunities</h4>
+                        <p data-en="As CTO of Ellez LLC, I'm also open to discussing investment opportunities in software development and technology ventures. Feel free to reach out for business partnerships." data-zh="作為 Ellez LLC 的技術總監，我也開放討論軟體開發和技術企業的投資機會。歡迎洽談商業合作夥伴關係。">As CTO of <strong>Ellez LLC</strong>, I'm also open to discussing investment opportunities in software development and technology ventures. Feel free to reach out for business partnerships.</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name" data-en="Name *" data-zh="姓名 *">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-en="Email *" data-zh="電子郵件 *">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service" data-en="Interest" data-zh="興趣項目">Interest</label>
+                            <select id="service" name="service">
+                                <option value="" data-en="Select your interest" data-zh="選擇您的興趣">Select your interest</option>
+                                <option value="website" data-en="Website Design & Building" data-zh="網站設計與建置">Website Design & Building</option>
+                                <option value="branding" data-en="Personal Branding" data-zh="個人品牌">Personal Branding</option>
+                                <option value="consultation" data-en="Planning & Platform Consultation" data-zh="規劃與平台諮詢">Planning & Platform Consultation</option>
+                                <option value="writing" data-en="Story Writing" data-zh="故事撰寫">Story Writing</option>
+                                <option value="textile" data-en="Textile & Apparel Connections" data-zh="紡織與服飾人脈">Textile & Apparel Connections</option>
+                                <option value="design-pro" data-en="Design Professional Referrals" data-zh="設計專業人士推薦">Design Professional Referrals</option>
+                                <option value="photography" data-en="Photography & Styling Contacts" data-zh="攝影與造型聯絡">Photography & Styling Contacts</option>
+                                <option value="events" data-en="Event & Market Guidance" data-zh="活動與市集指導">Event & Market Guidance</option>
+                                <option value="manufacturing" data-en="Custom Manufacturing Contacts" data-zh="客製化製造聯絡">Custom Manufacturing Contacts</option>
+                                <option value="investment" data-en="Investment Opportunities" data-zh="投資機會">Investment Opportunities</option>
+                                <option value="partnership" data-en="Business Partnership" data-zh="商業合作夥伴">Business Partnership</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-en="Message *" data-zh="訊息 *">Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell me more about your project or investment interest..." data-en="Tell me more about your project or investment interest..." data-zh="告訴我更多關於您的專案或投資興趣..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-en="Send Message" data-zh="發送訊息">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">Karia</span>
+                    <span class="logo-divider">|</span>
+                    <span class="logo-subtitle">design</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#home" data-en="Home" data-zh="首頁">Home</a>
+                    <a href="#about" data-en="About" data-zh="關於">About</a>
+                    <a href="#services" data-en="Services" data-zh="服務">Services</a>
+                    <a href="#portfolio" data-en="Portfolio" data-zh="作品">Portfolio</a>
+                    <a href="#additional-services" data-en="Connections" data-zh="人脈">Connections</a>
+                    <a href="#pricing" data-en="Pricing" data-zh="價格">Pricing</a>
+                    <a href="#guide" data-en="Guide" data-zh="指南">Guide</a>
+                    <a href="#contact" data-en="Contact" data-zh="聯絡">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/teresalin_su1124?igsh=MWU5NWM5NGp0NXZxdQ%3D%3D&utm_source=qr" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/%E6%A5%B7%E9%99%B5-%E8%98%87-b26a6b26a/" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-en="&copy; 2025 by Business Name. Built on Karia Design" data-zh="&copy; 2025 商業名稱。基於 Karia Design 建置">&copy; 2025 by Business Name. Built on Karia Design</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
