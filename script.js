@@ -160,34 +160,40 @@ window.addEventListener('scroll', function() {
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
 }, { passive: true });
 
-// Contact Form Handler
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData);
-    
-    // Simple validation
-    if (!data.name || !data.email || !data.message) {
-        showNotification('請填寫所有必填欄位！', 'error');
-        return;
+// Contact Form Handler - Enhanced for Netlify Forms
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            // Don't prevent default - let Netlify handle the submission
+            // e.preventDefault();
+            
+            // Get form data for validation
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation before submission
+            if (!data.name || !data.email || !data.message) {
+                e.preventDefault(); // Only prevent if validation fails
+                showNotification('請填寫所有必填欄位！', 'error');
+                return false;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                e.preventDefault(); // Only prevent if validation fails
+                showNotification('請輸入有效的電子郵件地址！', 'error');
+                return false;
+            }
+            
+            // Show sending notification but let form submit naturally
+            showNotification('正在發送訊息...', 'info');
+            
+            // Form will submit naturally to Netlify Forms
+            return true;
+        });
     }
-    
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-        showNotification('請輸入有效的電子郵件地址！', 'error');
-        return;
-    }
-    
-    // Simulate form submission
-    showNotification('正在發送訊息...', 'info');
-    
-    setTimeout(() => {
-        showNotification('訊息已成功發送！我會盡快回覆您。', 'success');
-        this.reset();
-    }, 1500);
 });
 
 // Notification System
