@@ -1246,6 +1246,69 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
 }
 
+.networking-welcome {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+    padding: 40px;
+    margin-bottom: 4rem;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+}
+
+.welcome-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.welcome-highlights {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.welcome-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.welcome-item i {
+    font-size: 1.5rem;
+    background: linear-gradient(45deg, #ffd700, #ffeb3b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.welcome-item:hover {
+    transform: translateY(-3px);
+    color: #ffd700;
+}
+
 .additional-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -2403,6 +2466,37 @@ tr:hover {
     /* Additional Services */
     .additional-services {
         padding: 60px 0;
+    }
+
+    .networking-welcome {
+        padding: 25px 20px;
+        margin-bottom: 2.5rem;
+    }
+
+    .welcome-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .welcome-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .welcome-highlights {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .welcome-item {
+        justify-content: center;
+        font-size: 0.95rem;
+    }
+
+    .welcome-item i {
+        font-size: 1.3rem;
     }
 
     .additional-grid {
